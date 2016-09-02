@@ -40,7 +40,8 @@ end
 gem "codeclimate-test-reporter", group: :test, require: nil
 
 group :test, :development do
-  gem "rspec-rails", "~> 2.4"
+  gem 'rspec-rails', '~> 3.5'
+  gem 'rspec', '~> 3.5'
 end
 
 group :development do
