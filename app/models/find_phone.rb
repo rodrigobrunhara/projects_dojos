@@ -1,18 +1,23 @@
-class Find
-  def read_input
+class FindPhone
 
+  def read_input
     File.open("arquivo.txt") do |txt|
       txt.each_line() do |line|
-
+        line = line.chomp
         if validate_char?(line)
-          find_number(line)
+          convert_to_number(line)
         end
       end
     end
   end
 
-  def find_number(name)
-    value = name
+  def validate_char?(line)
+    line.size >= 1 && line.size <= 30
+  end
+
+  private
+  def convert_to_number(name)
+    value = name.upcase
 
     value = value.tr(["A","B","C"].to_s, '2')
 
@@ -29,10 +34,7 @@ class Find
     value = value.tr(["T","U","V"].to_s, '8')
 
     value = value.tr(["W","X","Y","Z"].to_s, '9')
-    puts value
-  end
 
-  def validate_char?(line)
-    line.size >= 1 && line.size <= 30
+    puts value
   end
 end
