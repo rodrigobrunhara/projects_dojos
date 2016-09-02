@@ -1,5 +1,4 @@
 class FindPhone
-
   def read_input
     File.open("arquivo.txt") do |txt|
       txt.each_line() do |line|
