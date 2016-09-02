@@ -37,6 +37,8 @@ group :development, :test do
   gem 'byebug'
 end
 
+gem "codeclimate-test-reporter", group: :test, require: nil
+
 group :test, :development do
   gem "rspec-rails", "~> 2.4"
 end
