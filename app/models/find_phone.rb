@@ -4,7 +4,7 @@ class FindPhone
       txt.each_line() do |line|
         line = line.chomp
         if validate_char?(line)
-          convert_to_number(line)
+          puts convert_to_number(line)
         end
       end
     end
@@ -14,7 +14,6 @@ class FindPhone
     line.size >= 1 && line.size <= 30
   end
 
-  private
   def convert_to_number(name)
     value = name.upcase
 
@@ -34,6 +33,6 @@ class FindPhone
 
     value = value.tr(["W","X","Y","Z"].to_s, '9')
 
-    puts value
+    value
   end
 end
