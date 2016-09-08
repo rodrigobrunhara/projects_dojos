@@ -1,10 +1,28 @@
 class FindPhone
+  attr_reader :filepath
+  DICIONARIO = {
+    'ABC' => '2',
+    'DEF' => '3',
+    'GHI' => '4',
+    'JKL' => '5',
+    'MNO' => '6',
+    'PQRS' => '7',
+    'TUV' => '8',
+    'WXYZ' => '9'
+  }
+
+  def initialize(filepath)
+    @filepath = filepath
+  end
+
   def read_input
-    File.open("arquivo.txt") do |txt|
-      txt.each_line() do |line|
+    File.open(filepath) do |txt|
+      txt.each_line do |line|
         line = line.chomp
         if validate_char?(line)
           puts convert_to_number(line)
+        else
+          puts "Linha incorreta!"
         end
       end
     end
@@ -15,24 +33,16 @@ class FindPhone
   end
 
   def convert_to_number(name)
-    value = name.upcase
+    name.upcase.gsub(*er)
+  end
 
-    value = value.tr(["A","B","C"].to_s, '2')
+  private
+  def er
+    h = {}
+    DICIONARIO.each do |d, v|
+      d.each_char { |c| h[c] = v }
+    end
 
-    value = value.tr(["D","E","F"].to_s, '3')
-
-    value = value.tr(["G","H","I"].to_s, '4')
-
-    value = value.tr(["J","K","L"].to_s, '5')
-
-    value = value.tr(["M","N","O"].to_s, '6')
-
-    value = value.tr(["P","Q","R","S"].to_s, '7')
-
-    value = value.tr(["T","U","V"].to_s, '8')
-
-    value = value.tr(["W","X","Y","Z"].to_s, '9')
-
-    value
+   [/[A-Z]/, h]
   end
 end
